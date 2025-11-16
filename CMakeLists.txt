@@ -3,12 +3,13 @@ project(opedge)
 
 set(CMAKE_CXX_STANDARD 17)
 
-# Path to OpenCV Android SDK installation (adjust on your system)
-if(NOT DEFINED OpenCV_DIR)
-    set(OpenCV_DIR "${CMAKE_SOURCE_DIR}/opencv-android/sdk/native/jni")
-endif()
+# Use OpenCV from repo
+set(OpenCV_DIR "${CMAKE_SOURCE_DIR}/opencv-android/sdk/native/jni")
 
 find_package(OpenCV REQUIRED core imgproc imgcodecs)
+
+# Include OpenCV headers
+include_directories(${OpenCV_INCLUDE_DIRS})
 
 add_library(
     native-lib
